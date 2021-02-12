@@ -1,0 +1,23 @@
+{
+  "name": "proyectoshopservidor",
+  "version": "1.0.0",
+  "description": "API Rest para ProyectoShop",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "author": "Ivan Sotodosos",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.9.2",
+    "mongoose": "^5.11.15"
+  }
+}
