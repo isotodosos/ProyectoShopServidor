@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 4000;
 app.use( express.json({extended: true})) // cuando pones express.json tienes que enviar en postman el header como content-type y de valor aplication/json
 // Importar rutas.En express a cada uno de estos se les llama middleware 
 app.use('/api/usuarios', require('./routes/usuario') );
-//app.use('/api/auth', require('./routes/auth') );
+app.use('/api/auth', require('./routes/auth') );
 
 
 //arranca la app...
