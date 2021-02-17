@@ -30,7 +30,10 @@ exports.autenticarUsuario = async (req,res) => {
             }
         };
         //firma del jwt 
-        jwt.sign(payload, process.env.SECRETA , //aqui podemos añadirle un tiempo de expiración del token{}
+        jwt.sign(payload, process.env.SECRETA ,
+            {
+                expiresIn : 3600 //Ej: caduca en 3600segundos = 1h.Expirado el tiempo no se accede a portada por url salvo volviendo a logarse
+            }, //aqui podemos añadirle un tiempo de expiración del token{}
             (error, token) => {
             if(error) throw error;
             
