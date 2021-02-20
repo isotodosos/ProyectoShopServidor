@@ -20,6 +20,8 @@ app.use( express.json({extended: true})) // cuando pones express.json tienes que
 // Importar rutas.En express a cada uno de estos se les llama middleware 
 app.use('/api/usuarios', require('./routes/usuario') );
 app.use('/api/auth', require('./routes/auth') );
+app.use('api/producto', require('./routes/producto') );
+
 
 
 //arranca la app...
