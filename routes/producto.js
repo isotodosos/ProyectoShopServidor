@@ -13,9 +13,9 @@ const md_upload = multipart({uploadDir: './upload/productos'});// el conectmulti
 //Su endpoint va a ser: api/producto
 router.post('/crear-producto',[
     check('nombre', 'Escribe el nombre del producto').not().isEmpty(),
-    check('descripcion', 'Escribe la descripcion del producto').isEmail(),
+    check('descripcion', 'Escribe la descripcion del producto').not().isEmpty(),
     check('precio', 'Escribe el precio del producto').not().isEmpty(),
-    check('stock', 'Numera el stock del producto').not().isEmpty()
+    check('stock', 'Contabiliza el stock del producto').not().isEmpty()
     ],
 authPS,
 productoController.crearProducto);
