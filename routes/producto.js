@@ -20,11 +20,10 @@ router.post('/crear-producto',[
 authPS,
 productoController.crearProducto);
 
-/*
+
 router.post('/guardar-imagen-producto/:id',
-authPS,
 md_upload,
 productoController.guardarImagenProducto);
-*/
+
 
 module.exports = router;
