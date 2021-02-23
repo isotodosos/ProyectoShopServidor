@@ -26,4 +26,8 @@ md_upload,
 productoController.guardarImagenProducto);
 
 
+router.get('/catalogo',
+productoController.mostrarProductos)
+
+
 module.exports = router;

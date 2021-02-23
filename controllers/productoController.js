@@ -84,3 +84,16 @@ exports.guardarImagenProducto = async (req,res) => {
 
         
 }
+
+
+
+exports.mostrarProductos = async (req,res) => {
+
+    try {
+        const productos = await Producto.find();
+        return res.status(200).json({productos});
+
+    } catch (error) {
+        return res.status(500).json({msg : error});
+    }
+}
