@@ -1,8 +1,9 @@
 const Producto = require('../models/Producto');
 const { validationResult } = require('express-validator');
+//import { access} from 'fs';
 const fs = require('fs').promises;
 //var fs = require('fs'); //esta libreria nos permite eliminar archivos de nuestro sistema de ficheros
-var path = require('path');// otra libreria de node para sacar la ruta del archivo
+var path = require('path');// otra libreria de node para sacar la ruta del archivo (utilizado en getImagen)
 
 
 exports.crearProducto = async (req,res) => {
@@ -95,5 +96,33 @@ exports.mostrarProductos = async (req,res) => {
 
     } catch (error) {
         return res.status(500).json({msg : error});
+    }
+}
+
+
+exports.getImagen = async ( req, res ) => {
+
+    try {
+
+        const nombreImagen = req.params.imagen;
+        
+        const imagenPath = `./upload/productos/${nombreImagen}`;
+        console.log(imagenPath);
+        fs.access(imagenPath,  (error) => {
+        
+
+            if(error){
+                return res.status(400).send('hay un error aqui');
+                
+
+            }
+            
+            return res.sendFile(path.join(imagenPath));
+            
+        })
+        
+        
+    } catch (error) {
+        return res.status(400).send('error en este otro lado');
     }
 }
