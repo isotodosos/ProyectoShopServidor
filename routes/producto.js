@@ -30,4 +30,8 @@ router.get('/catalogo',
 productoController.mostrarProductos)
 
 
+router.get('/get-imagen/:imagen',
+productoController.getImagen)
+
+
 module.exports = router;
