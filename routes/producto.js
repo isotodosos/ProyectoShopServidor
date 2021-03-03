@@ -44,5 +44,10 @@ router.put('/actualizar/:id',
 authPS,
 productoController.actualizaProducto);
 
+// Borrar un producto
+router.delete('/borrar/:id',
+authPS,
+productoController.borrarProducto);
+
 
 module.exports = router;
