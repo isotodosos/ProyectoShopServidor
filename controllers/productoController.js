@@ -126,3 +126,50 @@ exports.getImagen =  ( req, res ) => {
         
     
 }
+
+
+exports.mostrarProducto = async (req,res) => {
+    
+    const productoId = req.params.id; 
+
+    try {
+        const producto = await Producto.findById(productoId);
+        return res.status(200).json({producto});
+
+    } catch (error) {
+        return res.status(500).json({msg : error});
+    }
+}
+
+
+
+exports.actualizaProducto = async (req, res) => {
+    
+    console.log(req.body);
+    const { _id, nombre, precio, stock, descripcion, imagen } = req.body;
+
+    try {
+
+        let producto = await Producto.findById(_id);
+        console.log(producto);
+        if(!producto){
+            return res.status(404).json({msg : 'El producto no existe'})
+        }
+
+        let nuevoproducto = {}
+        nuevoproducto.nombre = nombre;
+        nuevoproducto.precio = precio;
+        nuevoproducto.stock = stock;
+        nuevoproducto.descripcion = descripcion;
+        //nuevoproducto.imagen = imagen;
+console.log(nuevoproducto);
+        producto = await Producto.findOneAndUpdate({_id : _id}, {$set : nuevoproducto}, {new : true});
+console.log(producto)
+        return res.status(200).json({producto});
+
+
+        
+    } catch (error) {
+        console.log('el error viene por aki')
+    }
+}
